@@ -328,7 +328,7 @@ def test_best_model(best_config,dataset_dir):
     print("Best Test Set Accuracy:{}".format(correct/total))
     print("Best F1-Score:",f1.calc(average = "weighted"))
 
-def main(dataset_dir, num_samples=10, max_num_epochs=100, gpus_per_trial=0.5,dset_name = None):
+def main(dataset_dir, num_samples=10, max_num_epochs=500, gpus_per_trial=0.5,dset_name = None):
     config = {
         'nc1': tune.sample_from(lambda: 2 ** np.random.randint(2,9)),
         'k1': tune.choice([1,3,5]),
@@ -360,7 +360,7 @@ def main(dataset_dir, num_samples=10, max_num_epochs=100, gpus_per_trial=0.5,dse
             num_samples=num_samples,
         ),
         param_space=config,
-        run_config=RunConfig(storage_path=f"/scratch/users/k23058970/Model training/results/{dset_name}")
+        run_config=RunConfig(storage_path=f"/scratch/users/k23058970/Spectral-Training-Scripts/results/{dset_name}")
     )
     results = tuner.fit()
     

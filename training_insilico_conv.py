@@ -358,7 +358,7 @@ def main(dataset_dir, num_samples=10, max_num_epochs=100, gpus_per_trial=0.5,dse
             num_samples=num_samples,
         ),
         param_space=config,
-        run_config=RunConfig(storage_path=f"/scratch/users/k23058970/Model training/results/{dset_name}")
+        run_config=RunConfig(storage_path=f"/scratch/users/k23058970/Spectral-Training-Scripts/results/{dset_name}")
     )
     results = tuner.fit()
     
